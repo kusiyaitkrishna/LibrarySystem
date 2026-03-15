@@ -1,0 +1,53 @@
+{% extends 'accounts/base.html' %}
+{% block title %}Librarian Dashboard{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 flex justify-between items-center">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-900">Librarian Dashboard</h1>
+            <p class="text-gray-500 mt-1">Manage books, members, and library operations.</p>
+        </div>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+            <i class="fa-solid fa-user-shield mr-2"></i> Admin Access
+        </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <a href="{% url 'book_list' %}" class="group block p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-200 transition-all duration-200 hover:-translate-y-1">
+            <div class="flex items-center justify-between mb-4">
+                <div class="h-12 w-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-book text-xl"></i>
+                </div>
+                <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-500"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900">Manage Books</h3>
+            <p class="text-sm text-gray-500 mt-2">Add new inventory, update ISBNs, or remove damaged books.</p>
+        </a>
+
+        <a href="{% url 'member_list' %}" class="group block p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-200 transition-all duration-200 hover:-translate-y-1">
+            <div class="flex items-center justify-between mb-4">
+                <div class="h-12 w-12 bg-green-50 rounded-lg flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-users text-xl"></i>
+                </div>
+                <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-green-500"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900">Manage Members</h3>
+            <p class="text-sm text-gray-500 mt-2">View member details, handle registrations, and track activity.</p>
+        </a>
+
+        <a href="#" class="group block p-6 bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-200 transition-all duration-200 hover:-translate-y-1">
+            <div class="flex items-center justify-between mb-4">
+                <div class="h-12 w-12 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-hand-holding-hand text-xl"></i>
+                </div>
+                <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-orange-500"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900">Dispatch / Return</h3>
+            <p class="text-sm text-gray-500 mt-2">Issue books to members or process returned items.</p>
+        </a>
+
+    </div>
+</div>
+{% endblock %}
