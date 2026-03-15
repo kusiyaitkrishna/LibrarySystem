@@ -1,0 +1,88 @@
+{% extends 'accounts/base.html' %}
+{% block title %}{{ book.title }} - Details{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <nav class="flex mb-4" aria-label="Breadcrumb">
+        <ol class="flex items-center space-x-4">
+            <li>
+                <a href="{% url 'book_list' %}" class="text-gray-400 hover:text-gray-500">
+                    <i class="fa-solid fa-book"></i>
+                    <span class="sr-only">Books</span>
+                </a>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <i class="fa-solid fa-chevron-right text-gray-300 text-xs flex-shrink-0"></i>
+                    <span class="ml-4 text-sm font-medium text-gray-500">{{ book.title }}</span>
+                </div>
+            </li>
+        </ol>
+    </nav>
+
+    <div class="bg-white shadow-sm rounded-lg border border-gray-200 overflow-hidden">
+        <div class="px-6 py-5 border-b border-gray-200 bg-gray-50 flex justify-between items-start">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900">{{ book.title }}</h2>
+                <p class="mt-1 text-sm text-gray-500">by <span class="font-medium text-gray-900">{{ book.author }}</span></p>
+            </div>
+            {% if book.is_available %}
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 border border-green-200">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span> Available
+                </span>
+            {% else %}
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 border border-red-200">
+                     <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span> Out of Stock
+                </span>
+            {% endif %}
+        </div>
+
+        <div class="px-6 py-6">
+            <dl class="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">ISBN</dt>
+                    <dd class="mt-1 text-sm text-gray-900 font-mono bg-gray-50 inline-block px-2 py-1 rounded">{{ book.isbn }}</dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Category</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ book.get_category_display }}</dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Publisher</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ book.publisher|default:"N/A" }}</dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Publication Year</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ book.publication_year }}</dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Inventory Status</dt>
+                    <dd class="mt-1 text-sm text-gray-900">
+                        {{ book.available_copies }} available / {{ book.total_copies }} total
+                    </dd>
+                </div>
+                
+                {% if book.description %}
+                <div class="sm:col-span-2 border-t border-gray-100 pt-4 mt-2">
+                    <dt class="text-sm font-medium text-gray-500 mb-2">Description</dt>
+                    <dd class="text-sm text-gray-900 prose max-w-none">
+                        {{ book.description|linebreaks }}
+                    </dd>
+                </div>
+                {% endif %}
+            </dl>
+        </div>
+
+        {% if user.is_librarian %}
+        <div class="bg-gray-50 px-6 py-4 border-t border-gray-200 flex justify-end gap-3">
+            <a href="{% url 'book_delete' book.pk %}" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-red-50 hover:text-red-700 focus:outline-none transition">
+                <i class="fa-regular fa-trash-can mr-2"></i> Delete
+            </a>
+            <a href="{% url 'book_update' book.pk %}" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none transition">
+                <i class="fa-regular fa-pen-to-square mr-2"></i> Edit Book
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
