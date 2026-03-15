@@ -1,23 +1,51 @@
 # LibrarySystem
 
-A simple **Library Management System** project for managing books, users, and library operations.
+A Django-based Library Management System for handling users, books, members, and dispatch workflows.
 
-> Repository: `kusiyaitkrishna/LibrarySystem`
-
----
-
-## 📌 Overview
-
-This project is intended to help manage common library workflows such as:
-
-- Adding and managing books
-- Tracking issued/returned books
-- Managing member/user records
-- Organizing library-related data in a structured way
+**Repository:** `kusiyaitkrishna/LibrarySystem`
 
 ---
 
-## 🚀 Getting Started
+## 📖 About the Project
+
+This is a **Django 4.2** project structured into multiple apps:
+
+- `accounts` – user and authentication-related logic (includes custom user model)
+- `books` – book records and related operations
+- `members` – member management
+- `dispatch` – issue/return or dispatch-related flows
+
+The project currently uses **SQLite** (`db.sqlite3`) as the default database.
+
+---
+
+## 🧰 Tech Stack
+
+- Python 3.x
+- Django 4.2.x
+- SQLite (default, for development)
+
+---
+
+## 📁 Project Structure
+
+```text
+LibrarySystem/
+│
+├── LibrarySystem/          # Main Django project package (settings, urls, wsgi/asgi)
+├── accounts/               # Accounts app
+├── books/                  # Books app
+├── members/                # Members app
+├── dispatch/               # Dispatch app
+├── templates/              # Global templates folder
+├── manage.py               # Django management entry point
+├── db.sqlite3              # SQLite database (local/dev)
+└── readme.md               # Project documentation
+```
+
+---
+
+## ⚙️ Local Setup
 
 ### 1) Clone the repository
 
@@ -26,125 +54,142 @@ git clone https://github.com/kusiyaitkrishna/LibrarySystem.git
 cd LibrarySystem
 ```
 
-### 2) Install dependencies
+### 2) Create and activate virtual environment
 
-> Update this command based on your project stack.
-
+**Windows (PowerShell):**
 ```bash
-# Example (Node.js)
-npm install
+python -m venv venv
+venv\Scripts\activate
 ```
 
-### 3) Run the project
+**Linux/Mac:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3) Install dependencies
+
+If `requirements.txt` exists:
+```bash
+pip install -r requirements.txt
+```
+
+If not, install Django manually:
+```bash
+pip install "Django>=4.2,<5"
+```
+
+### 4) Run migrations
 
 ```bash
-# Example (Node.js)
-npm start
+python manage.py makemigrations
+python manage.py migrate
 ```
+
+### 5) Create superuser (optional)
+
+```bash
+python manage.py createsuperuser
+```
+
+### 6) Run development server
+
+```bash
+python manage.py runserver
+```
+
+Open: `http://127.0.0.1:8000/`
 
 ---
 
-## 📁 Folder Structure
+## 🔧 Important Django Configuration
 
-> Adjust folder names if your repository differs.
+From current settings:
 
-```text
-LibrarySystem/
-│
-├── src/                 # Main source code
-│   ├── controllers/     # Request/logic handlers
-│   ├── models/          # Data models/entities
-│   ├── services/        # Business logic
-│   ├── routes/          # API/application routes
-│   └── utils/           # Utility/helper functions
-│
-├── tests/               # Test files
-├── docs/                # Documentation files
-├── .gitignore           # Git ignored files
-├── README.md            # Project documentation
-└── (other config files)
-```
+- `INSTALLED_APPS` includes:
+  - `accounts`
+  - `books`
+  - `members`
+  - `dispatch`
+- `AUTH_USER_MODEL = 'accounts.User'`
+- Templates directory configured to use root `templates/`
+- Database: SQLite (`db.sqlite3`)
 
 ---
 
-## 🤝 Contribution Guide
+## 🤝 Contribution Guide (Fork + Branch by Your Name)
 
-We welcome contributions from other users.
+If another user wants to contribute:
 
-### Step 1: Fork this repository
+### 1) Fork this repository
 
-Click **Fork** on the top-right of this repo page:  
+Click **Fork** on:
 `https://github.com/kusiyaitkrishna/LibrarySystem`
 
-### Step 2: Clone your fork
+### 2) Clone your fork
 
 ```bash
-git clone https://github.com/<your-github-username>/LibrarySystem.git
+git clone https://github.com/<your-username>/LibrarySystem.git
 cd LibrarySystem
 ```
 
-### Step 3: Add upstream remote (original repo)
+### 3) Add upstream remote
 
 ```bash
 git remote add upstream https://github.com/kusiyaitkrishna/LibrarySystem.git
 git remote -v
 ```
 
-### Step 4: Create a branch with your name
+### 4) Create branch using your name/username
 
-Create a branch using your GitHub username (recommended format: `feature/<your-name>`):
+Use this format:
+- `feature/<your-name>`
+- `fix/<your-name>`
+- `docs/<your-name>`
 
+Example:
+```bash
+git checkout -b feature/krishna
+```
+
+or
 ```bash
 git checkout -b feature/<your-github-username>
 ```
 
-**Example:**
-
-```bash
-git checkout -b feature/johndoe
-```
-
-### Step 5: Make changes and commit
+### 5) Commit and push
 
 ```bash
 git add .
-git commit -m "Add: <short description of your changes>"
+git commit -m "Add: short description of changes"
+git push origin feature/<your-name>
 ```
 
-### Step 6: Push your branch to your fork
+### 6) Create Pull Request
 
-```bash
-git push origin feature/<your-github-username>
-```
+Open your fork on GitHub and create a PR to:
 
-### Step 7: Create a Pull Request
-
-- Go to your fork on GitHub
-- Click **Compare & pull request**
-- Submit PR to: `kusiyaitkrishna/LibrarySystem` (base branch: `main`)
+- **base repo:** `kusiyaitkrishna/LibrarySystem`
+- **base branch:** `main`
 
 ---
 
-## ✅ Branch Naming Rule
+## ✅ Branch Naming Rule for Contributors
 
-All contributors should create branches in this format:
+All contributors must create personal branches, such as:
 
-- `feature/<github-username>`
-- `fix/<github-username>`
-- `docs/<github-username>`
-
-Example:
-
-- `feature/kusiyaitkrishna`
+- `feature/diksha`
+- `feature/kusum`
+- `feature/puja`
 
 ---
 
-## 📬 Contact
+## 📝 Notes
 
-For questions or collaboration, open an issue in this repository.
+- Do not commit secret keys or sensitive settings.
+- Prefer adding `.env` and environment-based config for production.
+- Avoid committing updated `db.sqlite3` unless intentionally required.
 
 ---
 
-## 📄 License
-
-Add your project license details here (e.g., MIT License).
