@@ -1,195 +1,177 @@
-# LibrarySystem
+# Library Management System  
+**Final Project Assignment – Web Application Programming**  
+**Technologies: Django / Django REST Framework**
 
-A Django-based Library Management System for handling users, books, members, and dispatch workflows.
+## 1. Project Overview
 
-**Repository:** `kusiyaitkrishna/LibrarySystem`
+This project is a **Library Management System** developed as part of the Final Project Assignment for Web Application Programming.  
+It demonstrates core concepts of backend and full-stack web development, including:
 
----
+- Authentication and authorization
+- REST API development
+- CRUD operations
+- Database modeling and management
+- Frontend integration for complete application flow
 
-## 📖 About the Project
-
-This is a **Django 4.2** project structured into multiple apps:
-
-- `accounts` – user and authentication-related logic (includes custom user model)
-- `books` – book records and related operations
-- `members` – member management
-- `dispatch` – issue/return or dispatch-related flows
-
-The project currently uses **SQLite** (`db.sqlite3`) as the default database.
+The system is designed to help manage library operations such as maintaining records and allowing authenticated users to perform protected actions.
 
 ---
 
-## 🧰 Tech Stack
+## 2. Problem Statement
 
-- Python 3.x
-- Django 4.2.x
-- SQLite (default, for development)
-
----
-
-## 📁 Project Structure
-
-```text
-LibrarySystem/
-│
-├── LibrarySystem/          # Main Django project package (settings, urls, wsgi/asgi)
-├── accounts/               # Accounts app
-├── books/                  # Books app
-├── members/                # Members app
-├── dispatch/               # Dispatch app
-├── templates/              # Global templates folder
-├── manage.py               # Django management entry point
-├── db.sqlite3              # SQLite database (local/dev)
-└── readme.md               # Project documentation
-```
+Managing library records manually can be inefficient and error-prone.  
+This application solves that by providing a centralized digital system where users can securely log in and perform operations such as creating, viewing, updating, and deleting records through a web interface and backend API.
 
 ---
 
-## ⚙️ Local Setup
+## 3. Key Features
 
-### 1) Clone the repository
+### 3.1 Authentication System
+- User login functionality
+- Token/JWT-based authentication for protected routes
+- Secure access to authenticated API endpoints
+- Authorization checks for restricted actions
 
-```bash
-git clone https://github.com/kusiyaitkrishna/LibrarySystem.git
-cd LibrarySystem
-```
+### 3.2 CRUD Functionality
+The application supports complete CRUD functionality for library-related resources:
 
-### 2) Create and activate virtual environment
+- **Create**: Add new records  
+- **Read**: Retrieve and display existing records  
+- **Update**: Modify existing records  
+- **Delete**: Remove records from the system  
 
-**Windows (PowerShell):**
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
+### 3.3 Complete Application Flow
+The project includes both backend and frontend integration:
 
-**Linux/Mac:**
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
+#### Backend
+- Built with **Django** and **Django REST Framework**
+- REST API endpoints / Django views
+- JWT/Token authentication
+- Database models and business logic
 
-### 3) Install dependencies
-
-If `requirements.txt` exists:
-```bash
-pip install -r requirements.txt
-```
-
-If not, install Django manually:
-```bash
-pip install "Django>=4.2,<5"
-```
-
-### 4) Run migrations
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
-
-### 5) Create superuser (optional)
-
-```bash
-python manage.py createsuperuser
-```
-
-### 6) Run development server
-
-```bash
-python manage.py runserver
-```
-
-Open: `http://127.0.0.1:8000/`
+#### Frontend / UI
+- User interface for:
+  - Login
+  - Accessing protected features
+  - Performing CRUD operations
+  - Viewing system results
+- Technologies can include:
+  - Django Templates
+  - HTML, CSS, JavaScript  
+  *(and optionally React, if integrated)*
 
 ---
 
-## 🔧 Important Django Configuration
+## 4. Technology Stack
 
-From current settings:
-
-- `INSTALLED_APPS` includes:
-  - `accounts`
-  - `books`
-  - `members`
-  - `dispatch`
-- `AUTH_USER_MODEL = 'accounts.User'`
-- Templates directory configured to use root `templates/`
-- Database: SQLite (`db.sqlite3`)
+- **Backend Framework:** Django, Django REST Framework  
+- **Programming Language:** Python  
+- **Database:** SQLite / PostgreSQL  
+- **Frontend:** HTML, CSS, JavaScript, Django Templates  
+- **Authentication:** JWT / Token-based authentication  
+- **Version Control:** Git + GitHub  
 
 ---
 
-## 🤝 Contribution Guide (Fork + Branch by Your Name)
+## 5. Installation & Local Setup
 
-If another user wants to contribute:
+Follow these steps to run the project locally:
 
-### 1) Fork this repository
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/kusiyaitkrishna/LibrarySystem.git
+   cd LibrarySystem
+   ```
 
-Click **Fork** on:
-`https://github.com/kusiyaitkrishna/LibrarySystem`
+2. **Create and activate a virtual environment**
+   ```bash
+   python -m venv venv
+   ```
 
-### 2) Clone your fork
+   - On Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - On macOS/Linux:
+     ```bash
+     source venv/bin/activate
+     ```
 
-```bash
-git clone https://github.com/<your-username>/LibrarySystem.git
-cd LibrarySystem
-```
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### 3) Add upstream remote
+4. **Run migrations**
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
 
-```bash
-git remote add upstream https://github.com/kusiyaitkrishna/LibrarySystem.git
-git remote -v
-```
+5. **Create superuser (optional but recommended)**
+   ```bash
+   python manage.py createsuperuser
+   ```
 
-### 4) Create branch using your name/username
+6. **Start the development server**
+   ```bash
+   python manage.py runserver
+   ```
 
-Use this format:
-- `feature/<your-name>`
-- `fix/<your-name>`
-- `docs/<your-name>`
-
-Example:
-```bash
-git checkout -b feature/krishna
-```
-
-or
-```bash
-git checkout -b feature/<your-github-username>
-```
-
-### 5) Commit and push
-
-```bash
-git add .
-git commit -m "Add: short description of changes"
-git push origin feature/<your-name>
-```
-
-### 6) Create Pull Request
-
-Open your fork on GitHub and create a PR to:
-
-- **base repo:** `kusiyaitkrishna/LibrarySystem`
-- **base branch:** `main`
+7. Open in browser:
+   ```
+   http://127.0.0.1:8000/
+   ```
 
 ---
 
-## ✅ Branch Naming Rule for Contributors
+## 6. Features Implemented
 
-All contributors must create personal branches, such as:
-
-- `feature/diksha`
-- `feature/kusum`
-- `feature/puja`
-
----
-
-## 📝 Notes
-
-- Do not commit secret keys or sensitive settings.
-- Prefer adding `.env` and environment-based config for production.
-- Avoid committing updated `db.sqlite3` unless intentionally required.
+- User authentication (login-based access)
+- Protected routes/endpoints using token/JWT
+- Full CRUD operations for library records
+- API + UI integration
+- Database-backed record management
+- End-to-end system workflow for authenticated users
 
 ---
 
+## 7. Project Manual / Demonstration
+
+A project walkthrough video is provided below covering:
+
+- Login process
+- CRUD operations
+- Overall system workflow
+
+🎥 **Loom Video Demo:**  
+https://www.loom.com/share/2886c233adca48e2aa81656f22c72edf
+
+---
+
+## 8. Version Control Notes
+
+- The project is maintained using GitHub version control.
+- Commits represent incremental development of features and fixes.
+- Repository link for submission:  
+  https://github.com/kusiyaitkrishna/LibrarySystem
+
+---
+
+## 9. Submission Checklist Mapping
+
+This project includes:
+
+- ✅ Authentication system (login + token/JWT-based protection)  
+- ✅ CRUD functionality for main module  
+- ✅ Backend + frontend complete flow  
+- ✅ Database models and API/views  
+- ✅ README documentation with setup and feature details  
+- ✅ Video/manual demonstration link  
+- ✅ GitHub repository submission  
+
+---
+
+## 10. Author
+
+**GitHub:** [@kusiyaitkrishna](https://github.com/kusiyaitkrishna)
