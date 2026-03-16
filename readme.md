@@ -1,177 +1,151 @@
-# Library Management System  
-**Final Project Assignment – Web Application Programming**  
-**Technologies: Django / Django REST Framework**
+# Library Management System
 
-## 1. Project Overview
+Web Application Programming (Django)
 
-This project is a **Library Management System** developed as part of the Final Project Assignment for Web Application Programming.  
-It demonstrates core concepts of backend and full-stack web development, including:
+## Team Information
 
-- Authentication and authorization
-- REST API development
-- CRUD operations
-- Database modeling and management
-- Frontend integration for complete application flow
+**Team Name:**
 
-The system is designed to help manage library operations such as maintaining records and allowing authenticated users to perform protected actions.
+### Team Members
+1. **Diksha Jha** — Roll No: **11**
+2. **Kusum Pokhrel** — Roll No: **18**
+3. **Krishna Kusiyait Yadav** — Roll No: **17**
+4. **Puja Bharti** — Roll No:
 
 ---
 
-## 2. Problem Statement
+## Project Overview
 
-Managing library records manually can be inefficient and error-prone.  
-This application solves that by providing a centralized digital system where users can securely log in and perform operations such as creating, viewing, updating, and deleting records through a web interface and backend API.
-
----
-
-## 3. Key Features
-
-### 3.1 Authentication System
-- User login functionality
-- Token/JWT-based authentication for protected routes
-- Secure access to authenticated API endpoints
-- Authorization checks for restricted actions
-
-### 3.2 CRUD Functionality
-The application supports complete CRUD functionality for library-related resources:
-
-- **Create**: Add new records  
-- **Read**: Retrieve and display existing records  
-- **Update**: Modify existing records  
-- **Delete**: Remove records from the system  
-
-### 3.3 Complete Application Flow
-The project includes both backend and frontend integration:
-
-#### Backend
-- Built with **Django** and **Django REST Framework**
-- REST API endpoints / Django views
-- JWT/Token authentication
-- Database models and business logic
-
-#### Frontend / UI
-- User interface for:
-  - Login
-  - Accessing protected features
-  - Performing CRUD operations
-  - Viewing system results
-- Technologies can include:
-  - Django Templates
-  - HTML, CSS, JavaScript  
-  *(and optionally React, if integrated)*
+Library Management System is a Django-based web application developed to digitalize core library operations.  
+The system supports role-based access and enables authenticated workflows for managing books, members, and dispatch-related operations.
 
 ---
 
-## 4. Technology Stack
+## Core Features Implemented
 
-- **Backend Framework:** Django, Django REST Framework  
-- **Programming Language:** Python  
-- **Database:** SQLite / PostgreSQL  
-- **Frontend:** HTML, CSS, JavaScript, Django Templates  
-- **Authentication:** JWT / Token-based authentication  
-- **Version Control:** Git + GitHub  
+- User authentication (login/logout)
+- Role-based dashboard access
+- Book management module (CRUD)
+- Member management module (CRUD)
+- Dispatch module implementation
+- Protected views and secured navigation flow
+- UI using Django templates
 
 ---
 
-## 5. Installation & Local Setup
+## Detailed Module-wise Implementation
 
-Follow these steps to run the project locally:
+### 1) Accounts Module
+Expected implementation includes:
+- Login handling
+- Logout handling
+- Role-based redirect logic
+- Dashboard rendering for different user types
 
-1. **Clone the repository**
+### 2) Books Module
+Expected implementation includes:
+- Add new book
+- View all books
+- View book detail
+- Update book details
+- Delete book
+- Validation and access restrictions
+
+### 3) Members Module
+Expected implementation includes:
+- Register member
+- List members
+- View member detail
+- Update member profile
+- Delete member (and linked account logic if implemented)
+
+### 4) Dispatch Module
+Expected implementation includes:
+- Dispatch workflows integrated with library operations
+- Relevant views/models/forms/URLs based on your codebase
+
+---
+
+## Authentication and Authorization
+
+- Django authentication used for user login/logout
+- Protected views via decorators/middleware
+- Role checks for restricted operations
+
+---
+
+## Technology Stack
+
+- Python
+- Django
+- SQLite (development database)
+- HTML/CSS (Django templates)
+- Git & GitHub
+
+---
+
+## Installation Instructions
+
+1. Clone the repository
    ```bash
    git clone https://github.com/kusiyaitkrishna/LibrarySystem.git
    cd LibrarySystem
    ```
 
-2. **Create and activate a virtual environment**
+2. Create and activate virtual environment
    ```bash
    python -m venv venv
    ```
+   Windows:
+   ```bash
+   venv\Scripts\activate
+   ```
+   macOS/Linux:
+   ```bash
+   source venv/bin/activate
+   ```
 
-   - On Windows:
-     ```bash
-     venv\Scripts\activate
-     ```
-   - On macOS/Linux:
-     ```bash
-     source venv/bin/activate
-     ```
-
-3. **Install dependencies**
+3. Install dependencies
    ```bash
    pip install -r requirements.txt
    ```
+  
 
-4. **Run migrations**
+4. Apply migrations
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
 
-5. **Create superuser (optional but recommended)**
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-6. **Start the development server**
+5. Run server
    ```bash
    python manage.py runserver
    ```
 
-7. Open in browser:
-   ```
-   http://127.0.0.1:8000/
-   ```
-
 ---
 
-## 6. Features Implemented
+## Project Demonstration Video
 
-- User authentication (login-based access)
-- Protected routes/endpoints using token/JWT
-- Full CRUD operations for library records
-- API + UI integration
-- Database-backed record management
-- End-to-end system workflow for authenticated users
-
----
-
-## 7. Project Manual / Demonstration
-
-A project walkthrough video is provided below covering:
-
-- Login process
-- CRUD operations
-- Overall system workflow
-
-🎥 **Loom Video Demo:**  
+Loom Video URL:  
 https://www.loom.com/share/2886c233adca48e2aa81656f22c72edf
 
 ---
 
-## 8. Version Control Notes
+## Repository
 
-- The project is maintained using GitHub version control.
-- Commits represent incremental development of features and fixes.
-- Repository link for submission:  
-  https://github.com/kusiyaitkrishna/LibrarySystem
+GitHub: https://github.com/kusiyaitkrishna/LibrarySystem
 
 ---
 
-## 9. Submission Checklist Mapping
+## Contributors and Respective Contribution Areas
 
-This project includes:
+### 1. Diksha Jha (Roll No. 11)
 
-- ✅ Authentication system (login + token/JWT-based protection)  
-- ✅ CRUD functionality for main module  
-- ✅ Backend + frontend complete flow  
-- ✅ Database models and API/views  
-- ✅ README documentation with setup and feature details  
-- ✅ Video/manual demonstration link  
-- ✅ GitHub repository submission  
 
----
+### 2. Kusum Pokhrel (Roll No. 18)
 
-## 10. Author
 
-**GitHub:** [@kusiyaitkrishna](https://github.com/kusiyaitkrishna)
+### 3. Krishna Kusiyait Yadav (Roll No. 17)
+
+
+### 4. Puja Bharti
